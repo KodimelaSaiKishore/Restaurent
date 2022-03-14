@@ -1,0 +1,75 @@
+<div class="jumbotron m-auto py-5 bg-light">
+  <h1 class="text-center">Add New Restaurent Form</h1>
+</div>
+
+<div class="py-5">
+  <div
+    class="alert alert-success alert-dismissible fade show"
+    role="alert"
+    *ngIf="alert"
+  >
+    <strong> {{ this.addRestaurent.value.name }}! </strong>
+    <p>added sucessfully!</p>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+
+  <div
+    class="alert alert-success alert-dismissible fade show"
+    role="alert"
+    *ngIf="validityChecker"
+  >
+
+    <p>Please enter valid details!</p>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+
+  <form [formGroup]="addRestaurent" (ngSubmit)="createResto()">
+    <div class="mb-3 form-group">
+      <label>Name</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Name"
+        formControlName="name"
+      />
+    </div>
+    <div class="mb-3 form-group">
+      <label>Address</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Address"
+        formControlName="address"
+      />
+    </div>
+    <div class="mb-3 form-group">
+      <label>Mobile Number</label>
+      <input
+        type="tel"
+        class="form-control"
+        placeholder="Enter mobile number"
+        formControlName="mobile"
+      />
+    </div>
+    <div class="mb-3 form-group">
+      <label>Email</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Email"
+        formControlName="email"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

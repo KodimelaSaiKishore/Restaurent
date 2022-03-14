@@ -1,0 +1,62 @@
+<br>
+<div
+    class="alert alert-success alert-dismissible fade show"
+    role="alert"
+    *ngIf="alert"
+  >
+    <p>{{modalData.name}} </p>
+    <p>Deleted sucessfully!</p>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+
+
+<table class="table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Email</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let resto of collection, let i = index" class="text-center">
+      <th scope="row">{{i+1}}</th>
+      <td>{{ resto.name }}</td>
+      <td>{{ resto.address }}</td>
+      <td>{{ resto.email }}</td>
+      <td>{{ resto.mobile }}</td>
+      <td>
+        <a class="btn fa fa-edit text-dark btn-warning me-2" style="font-size: 15px;" routerLink="/update/{{resto.id}}"> Update</a>
+        <a class="btn fa fa-trash text-danger" type="button" style="font-size: 15px" (click)="initializeModal(resto.id)" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> Delete</a>
+      </td>
+
+    </tr>
+  </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">{{ modalData.name }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Do you want to delete?
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</a>
+        <a type="button" class="btn btn-primary" (click)="removeResto(modalData.id)"  data-bs-toggle="modal">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,88 @@
+<div class="jumbotron m-auto py-5 bg-light">
+  <h1 class="text-center">Edit Restaurent Form</h1>
+</div>
+
+<div class="py-5">
+  <div
+    class="alert alert-success alert-dismissible fade show"
+    role="alert"
+    *ngIf="alert"
+  >
+    <strong> {{ this.editRestaurent.value.name }}! </strong>
+    <p>updated sucessfully!</p>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div
+    class="alert alert-success alert-dismissible fade show"
+    role="alert"
+    *ngIf="ValidityCheck"
+  >
+    <p>Please enter valid details!</p>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+
+  <form [formGroup]="editRestaurent" (ngSubmit)="updateResto()">
+    <div class="mb-3 form-group">
+      <label>Name</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Name"
+        formControlName="name"
+      />
+      <div *ngIf="editRestaurent.value.name === '' && editRestaurent.value.name.touched" class="text-danger">
+        <p>*Please enter valid name</p>
+      </div>
+    </div>
+    <div class="mb-3 form-group">
+      <label>Address</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Address"
+        formControlName="address"
+      />
+      <div *ngIf="editRestaurent.value.address === '' && editRestaurent.value.address.touched" class="text-danger">
+        <p>*Please enter valid address</p>
+      </div>
+    </div>
+    <div class="mb-3 form-group">
+      <label>Mobile Number</label>
+      <input
+        type="tel"
+        class="form-control"
+        placeholder="Enter mobile number"
+        formControlName="mobile"
+      />
+      <div *ngIf="editRestaurent.value.mobile === '' && editRestaurent.value.mobile.touched" class="text-danger">
+        <p>*Please enter valid mobile number</p>
+      </div>
+    </div>
+    <div class="mb-3 form-group">
+      <label>Email</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Email"
+        formControlName="email"
+      />
+      <div *ngIf="editRestaurent.value.email === '' && editRestaurent.value.email.touched" class="text-danger">
+        <p>*Please enter valid email</p>
+      </div>
+    </div>
+    <div class="d-flex">
+      <a type="submit" class="btn btn-primary me-3" (click)="updateResto()">Submit</a>
+      <a class="btn btn-secondary" routerLink="/list">Back</a>
+    </div>
+  </form>
+</div>
